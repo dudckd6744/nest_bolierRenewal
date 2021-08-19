@@ -17,7 +17,7 @@ export class BoardsController {
         @Body() boardCreateDto: BoardCreateDto
     ): Promise<Board> {
         return this.boardService.createBoard(user, boardCreateDto);
-    }
+    }  
     
     @Get('/')
     getBoards(
