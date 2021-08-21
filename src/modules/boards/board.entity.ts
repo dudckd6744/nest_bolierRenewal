@@ -1,4 +1,4 @@
-import { BaseEntity, Column, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
+import { BaseEntity, Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from "typeorm";
 import { User } from "../auth/user.entity";
 
 @Entity()
@@ -19,4 +19,6 @@ export class Board extends BaseEntity {
     @JoinColumn()
     user: User;
 
+    @CreateDateColumn()
+    createdAt: Date;
 }

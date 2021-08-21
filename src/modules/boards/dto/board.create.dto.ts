@@ -9,5 +9,10 @@ export class BoardCreateDto {
 
     @IsNotEmpty()
     description: string;
+}
 
+export class BoardGetDto {
+    title: string;
+    limit: number;
+    offset:number
 }

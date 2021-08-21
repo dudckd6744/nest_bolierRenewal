@@ -1,10 +1,10 @@
-import { Body, Controller, Get, Post, UseGuards } from '@nestjs/common';
+import { Body, Controller, Get, Post, Query, UseGuards } from '@nestjs/common';
 import { AuthGuard } from 'src/utils/auth.guard';
 import { ReqUser } from 'src/utils/user.decorater';
 import { User } from '../auth/user.entity';
 import { Board } from './board.entity';
 import { BoardsService } from './boards.service';
-import { BoardCreateDto } from './dto/board.create.dto';
+import { BoardCreateDto, BoardGetDto } from './dto/board.create.dto';
 
 @Controller('boards')
 export class BoardsController {
@@ -21,9 +21,9 @@ export class BoardsController {
     
     @Get('/')
     getBoards(
+        @Query() boardGetDto: BoardGetDto,
         @ReqUser() user:User
-    ): Promise<Board[]> {
-        console.log(user)
-        return this.boardService.getBoards(user);
+    ): Promise<{board_count: number,boards: Board[]}> {
+        return this.boardService.getBoards(user,boardGetDto);
     }
 }
