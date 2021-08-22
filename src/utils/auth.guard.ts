@@ -1,16 +1,16 @@
 import {
-  Injectable,
-  CanActivate,
-  ExecutionContext,
-  UnauthorizedException,
-} from '@nestjs/common'
+    Injectable,
+    CanActivate,
+    ExecutionContext,
+    UnauthorizedException,
+} from "@nestjs/common";
 
 @Injectable()
 export class AuthGuard implements CanActivate {
-
-  public async canActivate(context: ExecutionContext): Promise<boolean> {
-    const req = context.switchToHttp().getRequest()
-    if (!req.user) throw new UnauthorizedException('권한이 없습니다')
-    return true
-  }
+    public async canActivate(context: ExecutionContext): Promise<boolean> {
+        const req = context.switchToHttp().getRequest();
+        // console.log(req)
+        if (!req.user) throw new UnauthorizedException("권한이 없습니다");
+        return true;
+    }
 }

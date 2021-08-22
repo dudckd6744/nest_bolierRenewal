@@ -1,15 +1,21 @@
 import { Expose } from "class-transformer";
-import { BaseEntity, Column, CreateDateColumn, Entity, PrimaryGeneratedColumn, Unique } from "typeorm";
+import {
+    BaseEntity,
+    Column,
+    CreateDateColumn,
+    Entity,
+    PrimaryGeneratedColumn,
+    Unique,
+} from "typeorm";
 
 @Entity()
-@Unique(['email'])
-export class User extends BaseEntity{
+@Unique(["email"])
+export class User extends BaseEntity {
     @PrimaryGeneratedColumn()
-    id : number;
+    id: number;
 
     @Column()
     name: string;
-
 
     @Column()
     email: string;
@@ -18,5 +24,5 @@ export class User extends BaseEntity{
     password: string;
 
     @CreateDateColumn()
-    createdAt: Date
+    createdAt: Date;
 }

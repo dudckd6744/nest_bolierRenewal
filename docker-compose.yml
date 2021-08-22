@@ -1,0 +1,21 @@
+version: "3.7"
+services: 
+  mysql:
+    image: "mysql"
+    restart: unless-stopped
+    container_name: app_mysql
+    ports:
+      - "3306:3306"
+    volumes:
+      - ./mysql/mysql_data:/var/lib/mysql
+    environment:
+      MYSQL_ROOT_PASSWORD: qwerasdf
+      MYSQL_USER: test
+      MYSQL_DATABASE: bolier
+
+
+  # nest:
+  #   build:
+  #     dockerfile: Dockerfile.dev
+  #     context: .
+  #   container_name: backend
